@@ -1,4 +1,4 @@
-package renote
+package renote_core
 
 class RenoteAPI() {
 

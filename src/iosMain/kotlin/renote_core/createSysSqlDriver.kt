@@ -1,4 +1,4 @@
-package renote
+package renote_core
 
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.ios.NativeSqliteDriver

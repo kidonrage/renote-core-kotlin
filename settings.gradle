@@ -1,4 +1,4 @@
-rootProject.name = 'ReNote'
+rootProject.name = 'ReNote_Core'
 
 
 enableFeaturePreview('GRADLE_METADATA')
