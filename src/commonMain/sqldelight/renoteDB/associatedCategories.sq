@@ -1,0 +1,20 @@
+CREATE TABLE associatedCategories (
+    noteId INTEGER NOT NULL REFERENCES notes(id),
+    categoryId INTEGER NOT NULL REFERENCES categories(id)
+);
+
+insertAssociatedCategory:
+INSERT INTO associatedCategories(noteId, categoryId)
+VALUES(?, ?);
+
+getCategoriesForNote:
+SELECT * FROM categories
+    INNER JOIN associatedCategories
+    ON categories.id=associatedCategories.categoryId
+    WHERE associatedCategories.noteId=(?);
+
+getCategoryNotes:
+SELECT * FROM notes
+    INNER JOIN associatedCategories
+    ON notes.id = associatedCategories.noteId
+    WHERE associatedCategories.categoryId=(?);
