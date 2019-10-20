@@ -9,3 +9,6 @@ SELECT * FROM categories;
 insertCategory:
 INSERT INTO categories(name)
 VALUES(?);
+
+last_insert_rowid:
+SELECT last_insert_rowid();
