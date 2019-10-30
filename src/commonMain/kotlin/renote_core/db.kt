@@ -56,6 +56,12 @@ class Storage() {
         return result.distinctBy { note -> note.id }
     }
 
+    fun getRandomNotesForCategories(categoriesIds: List<Long>): List<Note> {
+        val result = getNotesForCategories(categoriesIds)
+
+        return result.shuffled()
+    }
+
     fun addNote(name: String, text: String, attachedLink: String?, attachedCategories: List<Long>): Note {
         notesDAO.insertNote(name, text, attachedLink)
         val noteId = notesDAO.last_insert_rowid().executeAsOne()
