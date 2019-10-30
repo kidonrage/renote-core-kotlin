@@ -23,14 +23,17 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.squareup.sqldelight'
 
 kotlin {
-//    jvm()
     // This is for iPhone emulator
     // Switch here to iosArm64 (or iosArm32) to build library for iPhone device
-    iosX64("ios") {
+    // Switch here to iosX64 (or iosArm32) to build library for iPhone simulator
+    iosArm64("ios") {
         binaries {
             framework()
         }
     }
+
+    jvm("android")
+
     sourceSets {
         commonMain {
             dependencies {
@@ -43,23 +46,24 @@ kotlin {
                 implementation kotlin('test-annotations-common')
             }
         }
-//        jvmMain {
-//            dependencies {
-//                implementation kotlin('stdlib')
-//            }
-//        }
-//        jvmTest {
-//            dependencies {
-//                implementation kotlin('test')
-//                implementation kotlin('test-junit')
-//            }
-//        }
         iosMain {
             dependencies {
                 implementation "com.squareup.sqldelight:ios-driver:$sqldelight_version"
             }
         }
         iosTest {
+        }
+        androidMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                implementation "com.squareup.sqldelight:android-driver:$sqldelight_version"
+            }
+        }
+        androidTest {
+//            dependencies {
+//                implementation kotlin('test')
+//                implementation kotlin('test-junit')
+//            }
         }
     }
 }
